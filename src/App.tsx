@@ -1,6 +1,11 @@
-import { LuigiGame } from "./game/LuigiGame";
+import { useRef } from "react";
+import { IRefPhaserGame, LuigiGame } from "./game/LuigiGame";
 
 function App() {
+  const phaserRef = useRef<IRefPhaserGame | null>(null);
+
+  const currentScene = (scene: Phaser.Scene) => {};
+
   return (
     <div className="flex flex-col items-center">
       <div className="my-4">
@@ -12,8 +17,8 @@ function App() {
         </div>
       </div>
 
-      <div className="border ">
-        <LuigiGame />
+      <div className="border">
+        <LuigiGame ref={phaserRef} currentActiveScene={currentScene} />
       </div>
     </div>
   );
