@@ -1,0 +1,16 @@
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    networks:
+      - traefik_net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.find-luigi.rule=Host(`find-luigi.stanrunge.dev`)"
+      - "traefik.http.routers.find-luigi.entrypoints=web,websecure"
+      - "traefik.http.routers.find-luigi.tls.certresolver=myresolver"
+      - "traefik.http.services.find-luigi.loadbalancer.server.port=3000"
+
+networks:
+  traefik_net:
+    external: true
