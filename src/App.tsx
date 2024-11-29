@@ -4,7 +4,9 @@ import { IRefPhaserGame, LuigiGame } from "./game/LuigiGame";
 function App() {
   const phaserRef = useRef<IRefPhaserGame | null>(null);
 
-  const currentScene = (scene: Phaser.Scene) => {};
+  const currentScene = (scene: Phaser.Scene) => {
+    console.log(scene);
+  };
 
   return (
     <div className="flex flex-col items-center">
